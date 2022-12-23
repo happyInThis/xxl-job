@@ -5,13 +5,15 @@ import java.io.Serializable;
 /**
  * Created by xuxueli on 16/7/22.
  */
-public class TriggerParam implements Serializable{
+public class TriggerParam implements Serializable {
     private static final long serialVersionUID = 42L;
 
     private int jobId;
 
     private String executorHandler;
     private String executorParams;
+    private String executorIp;
+
     private String executorBlockStrategy;
     private int executorTimeout;
 
@@ -122,6 +124,14 @@ public class TriggerParam implements Serializable{
         this.broadcastTotal = broadcastTotal;
     }
 
+
+    public String getExecutorIp() {
+        return executorIp;
+    }
+
+    public void setExecutorIp(String executorIp) {
+        this.executorIp = executorIp;
+    }
 
     @Override
     public String toString() {

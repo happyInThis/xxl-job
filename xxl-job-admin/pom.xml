@@ -18,6 +18,14 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${spring-cloud-alibaba.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -72,10 +80,19 @@
 			<artifactId>xxl-job-core</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+			<version>${spring-cloud.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>xxl-job-admin</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

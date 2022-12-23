@@ -232,6 +232,12 @@
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorFailRetryCount" placeholder="${I18n.jobinfo_field_executorFailRetryCount_placeholder}" maxlength="4" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ></div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorIp}<font color="black">*</font></label>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="executorIp" placeholder="${I18n.jobinfo_field_executorIp_placeholder}" maxlength="200" ></div>
+
+                    </div>
+
                     <hr>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-6">
@@ -475,6 +481,12 @@ exit 0
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorTimeout" placeholder="${I18n.jobinfo_field_executorTimeout_placeholder}" maxlength="6" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ></div>
                         <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorFailRetryCount}<font color="black">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorFailRetryCount" placeholder="${I18n.jobinfo_field_executorFailRetryCount_placeholder}" maxlength="4" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorIp}<font color="black">*</font></label>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="executorIp" placeholder="${I18n.jobinfo_field_executorIp_placeholder}" maxlength="200" ></div>
+
                     </div>
 
 					<hr>

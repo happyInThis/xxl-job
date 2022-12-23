@@ -15,6 +15,7 @@ import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.enums.ExecutorBlockStrategyEnum;
 import com.xxl.job.core.glue.GlueTypeEnum;
 import com.xxl.job.core.util.DateUtil;
+import io.micrometer.core.instrument.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -139,7 +140,7 @@ public class XxlJobServiceImpl implements XxlJobService {
 			for (String item:childJobIds) {
 				temp += item + ",";
 			}
-			temp = temp.substring(0, temp.length()-1);
+			temp = temp.substring(0, temp.length() - 1);
 
 			jobInfo.setChildJobId(temp);
 		}
@@ -148,9 +149,13 @@ public class XxlJobServiceImpl implements XxlJobService {
 		jobInfo.setAddTime(new Date());
 		jobInfo.setUpdateTime(new Date());
 		jobInfo.setGlueUpdatetime(new Date());
+		String ip = jobInfo.getExecutorIp();
+		if (StringUtils.isNotBlank(ip)) {
+			jobInfo.setExecutorIp(ip.trim());
+		}
 		xxlJobInfoDao.save(jobInfo);
 		if (jobInfo.getId() < 1) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_add")+I18nUtil.getString("system_fail")) );
+			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_add") + I18nUtil.getString("system_fail")));
 		}
 
 		return new ReturnT<String>(String.valueOf(jobInfo.getId()));
@@ -279,9 +284,12 @@ public class XxlJobServiceImpl implements XxlJobService {
 		exists_jobInfo.setExecutorFailRetryCount(jobInfo.getExecutorFailRetryCount());
 		exists_jobInfo.setChildJobId(jobInfo.getChildJobId());
 		exists_jobInfo.setTriggerNextTime(nextTriggerTime);
-
+		String ip = jobInfo.getExecutorIp();
+		if (StringUtils.isNotBlank(ip)) {
+			exists_jobInfo.setExecutorIp(ip.trim());
+		}
 		exists_jobInfo.setUpdateTime(new Date());
-        xxlJobInfoDao.update(exists_jobInfo);
+		xxlJobInfoDao.update(exists_jobInfo);
 
 
 		return ReturnT.SUCCESS;
